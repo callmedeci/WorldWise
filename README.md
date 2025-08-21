@@ -1,5 +1,7 @@
 # WorldWise
 
+![App Icon](https://raw.githubusercontent.com/callmedeci/WorldWise/refs/heads/main/public/icon.png)
+
 WorldWise is a single-page application that lets you track your travels on a world map. Mark the cities you’ve visited, record your experiences, and share your journey with friends. Never forget where you’ve been and how you’ve wandered the world.
 
 Live Demo: [https://world-wise-production.vercel.app](https://world-wise-production.vercel.app)
