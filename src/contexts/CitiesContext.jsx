@@ -6,7 +6,7 @@ import {
   useReducer,
 } from 'react';
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = 'https://world-wise-api-six.vercel.app/api';
 
 const CitiesContext = createContext();
 
@@ -70,7 +70,7 @@ function CitiesProvider({ children }) {
       dispatch({ type: 'loading' });
 
       try {
-        const res = await fetch(`${BASE_URL}/cities`);
+        const res = await fetch(`${BASE_URL}`);
         const data = await res.json();
 
         dispatch({ type: 'cities/loaded', payload: data });
@@ -92,7 +92,7 @@ function CitiesProvider({ children }) {
       try {
         dispatch({ type: 'loading' });
 
-        const res = await fetch(`${BASE_URL}/cities/${id}`);
+        const res = await fetch(`${BASE_URL}/${id}`);
         const data = await res.json();
 
         dispatch({ type: 'city/loaded', payload: data });
@@ -110,9 +110,9 @@ function CitiesProvider({ children }) {
     try {
       dispatch({ type: 'loading' });
 
-      const res = await fetch(`${BASE_URL}/cities/`, {
+      const res = await fetch(`${BASE_URL}`, {
         method: 'POST',
-        body: JSON.stringify(newCity),
+        body: JSON.stringify({ id: crypto.randomUUID(), ...newCity }),
         headers: { 'Content-Type': 'application/json' },
       });
       const data = await res.json();
@@ -130,7 +130,7 @@ function CitiesProvider({ children }) {
     try {
       dispatch({ type: 'loading' });
 
-      await fetch(`${BASE_URL}/cities/${id}`, {
+      await fetch(`${BASE_URL}/${id}`, {
         method: 'DELETE',
       });
 
